@@ -1,0 +1,20 @@
+services:
+  kc:
+    image: "quay.io/keycloak/keycloak:21.1"
+    ports:
+      - "8180:8080"
+    environment:
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+    command:
+      - start-dev
+  ldap:
+    image: "bitnami/openldap:2.6.4"
+    ports:
+      - '1389:1389'
+      - '1636:1636'
+    environment:
+      - LDAP_ADMIN_USERNAME=admin
+      - LDAP_ADMIN_PASSWORD=admin
+      - LDAP_USERS=user1,user2
+      - LDAP_PASSWORDS=password1,password2
